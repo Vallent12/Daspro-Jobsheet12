@@ -1,8 +1,17 @@
 import java.util.Scanner;
 public class kafe03 {
 
-    public static void Menu(String namaPelanggan, boolean isMember, String kodePromo) {
+    public static int hitungTotalHarga03(int pilihanMenu, int banyakItem) {
+        int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
+
+        int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
+        return hargaTotal;
+    }
+
+    public static void Menu(String namaPelanggan, String kodePromo) {
         System.out.println("Selamat datang, " + namaPelanggan + "!");
+        
+        boolean isMember = namaPelanggan.equalsIgnoreCase("Budi");
 
         if (isMember) {
             System.out.println("Anda adalah member, dapatkan diskon 10% untuk setiap pembelian!");
@@ -11,7 +20,8 @@ public class kafe03 {
                 System.out.println("Kode promo valid: Diskon 50%");
             } else if (kodePromo.equals("DISKON30")) {
                 System.out.println("Kode promo valid: Diskon 30%");
-            } else if (!kodePromo.isEmpty()) {
+            } else if (kodePromo.isEmpty()) {
+            } else {
                 System.out.println("Kode promo " + kodePromo + " tidak valid.");
             }
         }    
@@ -33,14 +43,21 @@ public class kafe03 {
         System.out.print("Masukkan nama pelanggan: ");
         String nama = sc.nextLine();
 
-        System.out.print("Apakah Anda member? (true/false): ");
-        boolean isMember = sc.nextBoolean();
-        sc.nextLine();
-        
         System.out.print("Masukkan kode promo (jika ada): ");
         String kodePromo = sc.nextLine();
 
-        Menu(nama, isMember, kodePromo);
+        Menu(nama, kodePromo);
+
+        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
+        int pilihanMenu = sc.nextInt();
+
+        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
+        int banyakItem = sc.nextInt();
+
+        int totalHarga = hitungTotalHarga03(pilihanMenu, banyakItem);
+        System.out.println("Total harga untuk pesanan anda: Rp " + totalHarga);
+
+        sc.close();
     }
     
 }
