@@ -45,14 +45,25 @@ public class kafe03 {
 
         Menu(nama, kodePromo);
 
-        System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
-        int pilihanMenu = sc.nextInt();
+        int totalKeseluruhan = 0;
+        String lanjut;
 
-        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
-        int banyakItem = sc.nextInt();
+        do {
+            System.out.print("\nMasukkan nomor menu yang ingin Anda pesan: ");
+            int pilihanMenu = sc.nextInt();
 
-        int totalHarga = hitungTotalHarga03(pilihanMenu, banyakItem, kodePromo);
-        System.out.println("Total harga untuk pesanan anda: Rp " + totalHarga);
+            System.out.print("Masukkan jumlah item yang ingin dipesan: ");
+            int banyakItem = sc.nextInt();
+
+            totalKeseluruhan += hitungTotalHarga03(pilihanMenu, banyakItem, kodePromo);
+
+            System.out.print("Apakah ingin pesan menu lagi? (ya/tidak): ");
+            sc.nextLine();
+            lanjut = sc.nextLine();
+
+        } while (lanjut.equalsIgnoreCase("ya"));
+
+        System.out.println("\nTotal keseluruhan pesanan Anda: Rp " + totalKeseluruhan);
 
         sc.close();
     }
