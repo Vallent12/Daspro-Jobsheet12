@@ -5,13 +5,19 @@ public class NilaiMahasiswa03 {
         Scanner sc = new Scanner(System.in);
         int[] nilai = new int[N];
 
-        System.out.println("\n==== Input Nilai Mahasiswa ====");
         for (int i = 0; i < N; i++) {
             System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + ": ");
             nilai[i] = sc.nextInt();
         }
 
         return nilai;
+    }
+
+    public static void tampilArray(int[] nilai) {
+        System.out.println("\n==== Daftar Nilai Mahasiswa ====");
+        for (int i = 0; i < nilai.length; i++) {
+            System.out.println("Mahasiswa ke-" + (i + 1) + " : " + nilai[i]);
+        }
     }
 
     public static void main(String[] args) {
@@ -21,9 +27,7 @@ public class NilaiMahasiswa03 {
         int N = sc.nextInt();
 
         int[] nilaiMahasiswa = isianArray(N);
-
-        System.out.println("\nData berhasil dimasukkan!");
-
+        tampilArray(nilaiMahasiswa);
         sc.close();
     }
 }
